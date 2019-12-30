@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     
     steps:
@@ -22,9 +21,7 @@ jobs:
       run: flutter packages pub get
     - name: Build
       run: flutter build web --release
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@3.1.1
-      with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build/web
+    - name: Deploy to Zeit
+      run: |
+        cd build/web
+        npx now -n studio -t ${{ secrets.ZEIT_TOKEN }}

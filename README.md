@@ -1,3 +1,3 @@
 # Hive Studio
 
-WIP
+WIP - Most features like editing are still missing

@@ -24,4 +24,4 @@ jobs:
     - name: Deploy to Zeit
       run: |
         cd build/web
-        npx now -n studio -t ${{ secrets.ZEIT_TOKEN }}
+        npx now -n studio -t ${{ secrets.ZEIT_TOKEN }} --prod

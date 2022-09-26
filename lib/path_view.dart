@@ -6,7 +6,7 @@ class PathView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AppState>(
-      builder: (BuildContext context, AppState app, Widget? child) {
+      builder: (BuildContext context, AppState app, Widget child) {
         return Row(
           children: <Widget>[
             _buildPathElement(app.boxName),

@@ -16,15 +16,15 @@ class FileUpload extends StatefulWidget {
 }
 
 class _FileUploadState extends State<FileUpload> {
-  late StreamSubscription _dragOverSubscription;
-  late StreamSubscription _dropSubscription;
+  StreamSubscription _dragOverSubscription;
+  StreamSubscription _dropSubscription;
 
   @override
   void initState() {
     super.initState();
 
-    _dropSubscription = document.body!.onDragOver.listen(_onDragOver);
-    _dropSubscription = document.body!.onDrop.listen(_onDrop);
+    _dropSubscription = document.body.onDragOver.listen(_onDragOver);
+    _dropSubscription = document.body.onDrop.listen(_onDrop);
   }
 
   void _onDragOver(MouseEvent event) {
@@ -88,8 +88,8 @@ class _FileUploadState extends State<FileUpload> {
 
   @override
   void dispose() {
-    _dragOverSubscription.cancel();
-    _dropSubscription.cancel();
+    _dragOverSubscription?.cancel();
+    _dropSubscription?.cancel();
     super.dispose();
   }
 }

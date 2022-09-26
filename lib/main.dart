@@ -25,20 +25,16 @@ class MyApp extends StatelessWidget {
         fontFamily: 'OpenSans',
       ),
       home: Scaffold(
-        backgroundColor: Color(0xFFE6EBEB),
+        backgroundColor: Color(0xFFF3F5F6),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            InkWell(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 400),
-                child: Image.asset('assets/logo.png'),
-              ),
-              onTap: () {
-                appState.status = UploadStatus.none;
-              },
+            SizedBox(height: 16),
+            ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 300),
+              child: Image.asset('assets/logo.png'),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 16),
             Expanded(
               child: ChangeNotifierProvider(
                 child: FileUpload(),

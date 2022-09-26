@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:studio/file_upload.dart';
+
+import 'upload_status_enum.dart';
 
 class AppState extends ChangeNotifier {
   UploadStatus _status = UploadStatus.none;
@@ -9,14 +10,14 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  String _boxName;
+  String _boxName = '';
   String get boxName => _boxName;
   set boxName(String boxName) {
     _boxName = boxName;
     notifyListeners();
   }
 
-  Map<dynamic, dynamic> _entries;
+  Map<dynamic, dynamic> _entries = {};
   Map<dynamic, dynamic> get entries => _entries;
   set entries(Map<dynamic, dynamic> entries) {
     _entries = entries;

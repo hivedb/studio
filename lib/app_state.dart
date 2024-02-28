@@ -9,15 +9,15 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  String _boxName;
-  String get boxName => _boxName;
+  String? _boxName;
+  String get boxName => _boxName ?? '';
   set boxName(String boxName) {
     _boxName = boxName;
     notifyListeners();
   }
 
-  Map<dynamic, dynamic> _entries;
-  Map<dynamic, dynamic> get entries => _entries;
+  Map<dynamic, dynamic>? _entries;
+  Map<dynamic, dynamic> get entries => _entries ?? <dynamic, dynamic>{};
   set entries(Map<dynamic, dynamic> entries) {
     _entries = entries;
     notifyListeners();

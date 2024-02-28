@@ -3,6 +3,13 @@ import 'dart:typed_data';
 import 'package:hive/hive.dart';
 
 class ObjectAdapter extends TypeAdapter<Object> {
+  final int _typeId;
+
+  ObjectAdapter(this._typeId);
+
+  @override
+  int get typeId => _typeId;
+
   @override
   Object read(BinaryReader reader) {
     var bytes = reader.peekBytes(reader.availableBytes);

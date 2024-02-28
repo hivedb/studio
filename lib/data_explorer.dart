@@ -90,7 +90,7 @@ class EntryWidget extends StatelessWidget {
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(
-        side: BorderSide(width: 1, color: Colors.grey[300]),
+        side: BorderSide(width: 1, color: Colors.grey[300]!),
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
       clipBehavior: Clip.antiAlias,
@@ -110,9 +110,11 @@ class EntryWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
-                value.toString(),
-                style: TextStyle(fontSize: 16),
+              Expanded(
+                child: Text(
+                  value.toString(),
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
             ],
           ),

@@ -14,15 +14,15 @@ class FileUpload extends StatefulWidget {
 }
 
 class _FileUploadState extends State<FileUpload> {
-  StreamSubscription _dragOverSubscription;
-  StreamSubscription _dropSubscription;
+  StreamSubscription? _dragOverSubscription;
+  StreamSubscription? _dropSubscription;
 
   @override
   void initState() {
     super.initState();
 
-    _dropSubscription = document.body.onDragOver.listen(_onDragOver);
-    _dropSubscription = document.body.onDrop.listen(_onDrop);
+    _dropSubscription = document.body?.onDragOver.listen(_onDragOver);
+    _dropSubscription = document.body?.onDrop.listen(_onDrop);
   }
 
   void _onDragOver(MouseEvent event) {
@@ -35,7 +35,7 @@ class _FileUploadState extends State<FileUpload> {
     event.preventDefault();
 
     var files = event.dataTransfer.files;
-    if (files.isEmpty) return;
+    if (files == null || files.isEmpty) return;
 
     var file = files.first;
     var reader = FileReader();
@@ -44,12 +44,12 @@ class _FileUploadState extends State<FileUpload> {
     });
     reader.readAsArrayBuffer(file);
 
-    var appState = Provider.of<AppState>(context);
+    var appState = Provider.of<AppState>(context, listen: false);
     appState.status = UploadStatus.processing;
   }
 
   void _process(String name, Uint8List bytes) {
-    var appState = Provider.of<AppState>(context);
+    var appState = Provider.of<AppState>(context, listen: false);
     scheduleMicrotask(() async {
       try {
         var box = await Hive.openBox('box', bytes: bytes);
@@ -84,7 +84,6 @@ class _FileUploadState extends State<FileUpload> {
       case UploadStatus.success:
         return DataExplorer();
     }
-    return Container();
   }
 
   @override
